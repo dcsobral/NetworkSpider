@@ -1,0 +1,21 @@
+This is an SNMP spider that will take a list of routers, and discover
+all networks and routers reachable from them.
+
+It generates a dot file (http://en.wikipedia.org/wiki/DOT_language), which
+can then be used by other programs to generate graphs displaying routes,
+routers and connected networks.
+
+Usage is:
+
+  ./spiderPub comunity alternatecomunity centralRouterIP routerIP routerIP routerIP ...
+
+The centralRouterIP replaces any routes to "0.0.0.0/0", so this really works better with
+a star topology. You don't need to pass the IP to all routers, but you need to pass the
+IP of any router that cannot be discovered from the others (like routers whose connection
+go through a third party).
+
+It will always try the first comunity, and fall back to the alternate if the first fails.
+
+As you can see, things are very bare bones, but it did the job I needed it to, and a
+friend wanted to use it, so I'm making it public. :-)
+
